@@ -1,0 +1,41 @@
+first create collection name and insert my all prodcuts
+------>   db.guvitask.insertMany([{}])
+
+1. Find all the information about each products
+----> db.guvitask.find().toArray();
+
+2. Find the product price which are between 400 to 800
+----> db.guvitask.find({product_price:{$gt:400, $lt:800}})
+
+3. Find the product price which are not between 400 to 600
+----> db.guvitask.find({product_price:{$not:{$gt:400, $lt:800}}});
+
+4. List the four product which are greater than 500 in price
+---->  db.guvitask.find({product_price:{$gt:500}})
+
+5. Find the product name and product material of each products
+---->  db.guvitask.find().forEach((ref)=>{
+    print("pro-name: ", ref.product_name)
+    print("pro-material: ", ref.product_material)
+});
+
+6. Find the product with a row id of 10
+---->  db.guvitask.findOne({id:"10"})
+
+7. Find only the product name and product material
+---->  db.guvitask.find({},{_id:0, product_name:1, product_material:1}).toArray()
+
+8. Find all products which contain the value of soft in product material ?
+---->  db.guvitask.find({product_material: "Soft"})
+
+9. Find products which contain product color indigo  and product price 492.00
+---->  db.guvitask.find({$and: [{product_color: "indigo"},{product_price: 492.00}]}).toArray()
+
+10. Delete the products which product price value are 28
+---->  db.guvitask.deleteMany({product_price:{$lte:28}})
+                      or
+----> db.guvitask.deleteOne({_id: ObjectId('663d6e994e5c0e08a046b7a1')})
+
+
+
+
